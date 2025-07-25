@@ -11,22 +11,18 @@ classdef File
         filename (1,1) string
         directory (1,1) string
 
-        type string = ""
         sample string = ""
         acq_time double = NaN
         polarization string = ""
         time_str double = NaN
         region double = NaN
-        condition string = ""
-        condition2 string = ""
-        concentration string = ""
+        % condition string = ""
+        % condition2 string = ""
+        % concentration string = ""
 
         raw_data table = table()
         processed_data table = table()
-        pts_cleaned double = zeros(0, 2)
-
-        bg_used string = ""
-        ref_used string = ""
+        % pts_cleaned double = zeros(0, 2)
     end
 
     methods
@@ -36,33 +32,14 @@ classdef File
             obj.directory = string(directory);
         end
 
-        function obj = extract_info(obj, calibration, ref)
+        function obj = extract_info(obj)
             % Extracts metadata from the filename using a regex pattern.
             tokens = File.parse_filename(obj.filename);
             obj.sample        = tokens{1};
-            % obj.concentration = tokens{2};
-            % obj.condition     = tokens{3};
-            % obj.condition2    = tokens{4};
             obj.polarization  = tokens{2};
             obj.region        = str2double(tokens{3});
             obj.acq_time      = str2double(tokens{4});
             obj.time_str      = str2double(tokens{5});
-
-            % Determine type of file
-            fname = lower(obj.filename);
-            if contains(fname, "bg") || contains(fname, "bkg")
-                if contains(obj.sample, ref)
-                    obj.type = "ref bg";
-                else
-                    obj.type = "sample bg";
-                end
-            elseif contains(fname, ref)
-                obj.type = "ref sig";
-            elseif contains(fname, calibration)
-                obj.type = "calibration";
-            else
-                obj.type = "sample sig";
-            end
         end
 
         function obj = extract_data(obj, delimiter)
@@ -105,8 +82,8 @@ classdef File
         function info(obj)
             % Prints file summary
             fprintf("File: %s\n", obj.filename);
-            fprintf("Type: %s | Sample: %s | Region: %.1f µm | Time: %.1fs | Pol: %s\n", ...
-                obj.type, obj.sample, obj.region, obj.acq_time, obj.polarization);
+            fprintf("Sample: %s | Region: %.1f µm | Acquisition time: %.1fs s | Pol: %s\n", ...
+                obj.sample, obj.region, obj.acq_time, obj.polarization);
         end
     end
 
