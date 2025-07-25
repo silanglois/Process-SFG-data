@@ -1,6 +1,6 @@
 classdef SignalFile < File
     properties
-        bg_used File
+        bg_used string
     end
 
     methods
@@ -14,7 +14,7 @@ classdef SignalFile < File
             bg = bg.ensure_processed_data();
             obj.processed_data.Intensity = ...
                 obj.processed_data.Intensity - bg.processed_data.Intensity;
-            obj.bg_used = bg;
+            obj.bg_used = bg.filename;
         end
     end
 end

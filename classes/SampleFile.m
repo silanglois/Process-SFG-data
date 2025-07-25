@@ -1,6 +1,6 @@
 classdef SampleFile < SignalFile
     properties
-        ref_used File
+        ref_used string
     end
 
     methods

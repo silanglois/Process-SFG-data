@@ -9,21 +9,21 @@ ref_str = "zqz";
 % === Load and classify all files ===
 detected_files = dir(fullfile(data_dir, '*.csv'));
 
-files = cell(1, numel(all_files));
+files = cell(1, numel(detected_files));
 
-for i = 1:numel(all_files)
-    fname = lower(all_files(i).name);
+for i = 1:numel(detected_files)
+    fname = lower(detected_files(i).name);
     is_sample = ~contains(fname, ref_str);
     is_sig = ~contains(fname, "bg") || contains(fname, "bkg") || contains(fname, "background");
 
     if is_sig
         if is_sample
-            f = SampleFile(all_files(i));
+            f = SampleFile(detected_files(i));
         else
-            f = SignalFile(all_files(i));
+            f = SignalFile(detected_files(i));
         end
     else
-        f = File(all_files(i));
+        f = File(detected_files(i));
     end
 
     % Always extract info and raw data
