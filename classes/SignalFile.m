@@ -1,6 +1,6 @@
-classdef ReferenceFile < File
+classdef SignalFile < File
     methods
-        function obj = ReferenceFile(filename, directory)
+        function obj = SignalFile(filename, directory)
             obj@File(filename, directory);
         end
 
