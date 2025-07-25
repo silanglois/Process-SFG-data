@@ -1,7 +1,7 @@
 classdef SampleFile < SignalFile
     methods
-        function obj = SampleFile(filename, directory)
-            obj@SignalFile(filename, directory);
+        function obj = SampleFile(filestruct)
+            obj@SignalFile(filestruct);
         end
 
         function obj = subtract_background(obj, bg)

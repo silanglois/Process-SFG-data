@@ -9,7 +9,7 @@ classdef File
     
     properties
         filename (1,1) string
-        directory (1,1) string
+        path (1,1) string
 
         sample string = ""
         acq_time double = NaN
@@ -26,10 +26,10 @@ classdef File
     end
 
     methods
-        function obj = File(filename, directory)
+        function obj = File(filestruct)
             % Constructor
-            obj.filename = string(filename);
-            obj.directory = string(directory);
+            obj.filename = filestruct.name;
+            obj.path = fullfile(filestruct.folder, filestruct.name);
         end
 
         function obj = extract_info(obj)
@@ -44,13 +44,12 @@ classdef File
 
         function obj = extract_data(obj, delimiter)
             % Loads the raw data table using the specified delimiter
-            fullpath = fullfile(obj.directory, obj.filename);
-            if ~isfile(fullpath)
-                error("File:NotFound", "File not found at %s", fullpath);
+            if ~isfile(obj.path)
+                error("File:NotFound", "File not found at %s", obj.path);
             end
-            opts = detectImportOptions(fullpath);
+            opts = detectImportOptions(obj.path);
             opts.Delimiter = delimiter;
-            obj.raw_data = readtable(fullpath, opts);
+            obj.raw_data = readtable(obj.path, opts);
         end
 
         function obj = avg_frames(obj)
