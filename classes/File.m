@@ -40,16 +40,9 @@ classdef File
             obj.region        = str2double(tokens{3});
             obj.acq_time      = str2double(tokens{4});
             obj.time_str      = str2double(tokens{5});
-        end
 
-        function obj = extract_data(obj, delimiter)
             % Loads the raw data table using the specified delimiter
-            if ~isfile(obj.path)
-                error("File:NotFound", "File not found at %s", obj.path);
-            end
-            opts = detectImportOptions(obj.path);
-            opts.Delimiter = delimiter;
-            obj.raw_data = readtable(obj.path, opts);
+            obj.raw_data = readtable(obj.path);
         end
 
         function obj = avg_frames(obj)

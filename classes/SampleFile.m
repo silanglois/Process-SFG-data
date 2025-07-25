@@ -1,7 +1,12 @@
 classdef SampleFile < SignalFile
+    properties
+        ref_used File
+    end
+
     methods
         function obj = SampleFile(filestruct)
             obj@SignalFile(filestruct);
+            obj.ref_used = "not yet normalized";
         end
 
         function obj = subtract_background(obj, bg)
@@ -16,7 +21,7 @@ classdef SampleFile < SignalFile
             obj = obj.ensure_processed_data();
             ref = ref.ensure_processed_data();
             if ~isequal(obj.processed_data.Wavelength, ref.processed_data.Wavelength)
-                error("Wavelength mismatch during division.");
+                error("Wavelength mismatch during normalization.");
             end
             obj.processed_data.Intensity = ...
                 obj.processed_data.Intensity ./ ref.processed_data.Intensity;

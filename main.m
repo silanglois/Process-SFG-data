@@ -7,9 +7,9 @@ calibration_str = "polystyrene";
 ref_str = "zqz";
 
 % === Load and classify all files ===
-all_files = dir(fullfile(data_dir, '*.csv'));
+detected_files = dir(fullfile(data_dir, '*.csv'));
 
-objects = cell(1, numel(all_files));
+files = cell(1, numel(all_files));
 
 for i = 1:numel(all_files)
     fname = lower(all_files(i).name);
@@ -18,14 +18,14 @@ for i = 1:numel(all_files)
 
     if is_sig
         if is_sample
-            obj = SampleFile(all_files(i));
+            f = SampleFile(all_files(i));
         else
-            obj = SignalFile(all_files(i));
+            f = SignalFile(all_files(i));
         end
     else
-        obj = File(all_files(i));
+        f = File(all_files(i));
     end
 
     % Always extract info and raw data
-    objects{i} = obj.extract_info();
+    files{i} = f.extract_info();
 end
