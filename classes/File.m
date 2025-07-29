@@ -7,9 +7,9 @@ classdef File
     % Description:
     %   Parses file names, loads data, averages frames, and converts units.
     
-    properties
-        filename (1,1) string
-        path (1,1) string
+    properties (Access = public)
+        filename string
+        path string
 
         sample string = ""
         acq_time double = NaN
