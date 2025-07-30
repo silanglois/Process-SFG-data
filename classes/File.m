@@ -43,20 +43,19 @@ classdef File
 
             % Loads the raw data table using the specified delimiter
             obj.raw_data = readtable(obj.path);
-            obj.processed_data = obj.raw_data;
             obj = obj.avg_frames();
         end
 
         function obj = avg_frames(obj)
             % Averages frames
 
-            df = obj.processed_data;
+            df = obj.raw_data;
             if ~all(ismember(["Frame", "Intensity"], df.Properties.VariableNames))
                 error("File:InvalidTable", "Expected 'Frame' and 'Intensity' columns.");
             end
             max_frame = max(df.Frame);
-            intensity = reshape(df.Intensity, max_frame, []);
-            mean_intensity = mean(intensity, 1);
+            intensity = reshape(df.Intensity, [], max_frame);
+            mean_intensity = mean(intensity, 2);
 
             wavelength = df.Wavelength(1:length(mean_intensity));
             obj.processed_data = table(wavelength(:), mean_intensity(:), ...
