@@ -1,4 +1,4 @@
-classdef File
+classdef File < handle
     % File - A class to represent and parse spectroscopy data files.
     %
     % Syntax:
