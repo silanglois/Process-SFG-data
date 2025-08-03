@@ -96,51 +96,59 @@ classdef File < handle
     end
 
     methods (Static, Access = private)
-
         function info = parse_filename(filename)
-            % Applies regex to extract parts from a standardized filename
-            pattern = "^([^_]+)" + ...                           % 1. Anything up to the first underscore — Sample name
-                      "(?:_([0-9]*\.?[0-9]+[a-zA-Z]+))?" + ...   % 2. Optional: number (float/int) + units (e.g., "10.0mM")
-                      "(?:_([^_]+))?" + ...                      % 3. Optional: arbitrary string (e.g., condition)
-                      "(?:_([^_]+))?" + ...                      % 4. Optional: another arbitrary string (e.g., replicate, set)
-                      "_([sp]{3})" + ...                         % 5. Exactly 3 letters, only s or p — polarization, like "ssp", "ppp"
-                      "_([0-9]*\.?[0-9]+)um" + ...               % 6. Float number with "um" — IR wavelength (e.g., "4.5um")
-                      "_([0-9]*\.?[0-9]+)s" + ...                % 7. Float number with "s" — acquisition time (e.g., "2.0s")
-                      "_([0-2][0-9][0-5][0-9])" + ...            % 8. 4-digit time — e.g., 1530 (24h format)
-                      "(?:_bg)?" + ...                           % Optional "_bg" — indicates background
-                      "(?:_processed)?" + ...                    % Optional "_processed" — indicates it's been processed
-                      "\.csv$";                                  % Ends with ".csv"
+            pattern = "^([^_]+)" + ...                           % 1. sample
+                      "(?:_([^_]+))?" + ...                      % 2. concentration (optional)
+                      "(?:_([^_]+))?" + ...                      % 3. condition (optional)
+                      "(?:_([^_]+))?" + ...                      % 4. condition2 (optional)
+                      "_([sp]{3})" + ...                         % 5. polarization
+                      "_([0-9]*\.?[0-9]+)um" + ...               % 6. region
+                      "_([0-9]*\.?[0-9]+)s" + ...                % 7. acqtime
+                      "_([0-2][0-9][0-5][0-9])" + ...            % 8. time
+                      "(?:_bg)?" + ...
+                      "(?:_processed)?" + ...
+                      "\.csv$";
+                  
             tokens = regexp(filename, pattern, 'tokens');
-
+        
             if isempty(tokens)
                 error("File:BadName", "Filename '%s' does not match expected pattern.", filename);
             end
+        
             t = tokens{1};
-            
-            % store collected tokens in a struct
+            n = numel(t);
+        
+            % Initialize optional fields as empty strings
+            concentration = "";
+            condition     = "";
+            condition2    = "";
+        
+            % Use positional inference
+            switch n
+                case 8  % All optional fields present
+                    concentration = t{2};
+                    condition     = t{3};
+                    condition2    = t{4};
+                case 7
+                    concentration = t{2};
+                    condition     = t{3};
+                case 6
+                    concentration = t{2};
+                case 5
+                    % No optional fields
+            end
+        
             info = struct( ...
-                'sample',        File.get_token(t, 1), ...
-                'concentration', File.get_token(t, 2), ...
-                'condition',     File.get_token(t, 3), ...
-                'condition2',    File.get_token(t, 4), ...
-                'polarization',  File.get_token(t, 5), ...
-                'region',        str2double(File.get_token(t, 6)), ...
-                'acqtime',       str2double(File.get_token(t, 7)), ...
-                'time',          File.get_token(t, 8) ...
+                'sample',        string(t{1}), ...
+                'concentration', string(concentration), ...
+                'condition',     string(condition), ...
+                'condition2',    string(condition2), ...
+                'polarization',  string(t{n - 3}), ...
+                'region',        str2double(t{n - 2}), ...
+                'acqtime',       str2double(t{n - 1}), ...
+                'time',          string(t{n}) ...
             );
         end
-        
-        function val = get_token(t, i)
-            if i <= numel(t)
-                val = t{i};
-                if ismissing(val)
-                    val = "";
-                elseif ischar(val)
-                    val = string(val);
-                end
-            else
-                val = "";
-            end
-        end
+
     end
 end
