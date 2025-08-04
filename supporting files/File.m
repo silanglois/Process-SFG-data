@@ -7,14 +7,6 @@ classdef File < handle
         
         % extracted file info
         info struct
-        % sample string = ""
-        % acq_time double = NaN
-        % polarization string = ""
-        % time_str double = NaN
-        % region double = NaN
-        % condition string = ""
-        % condition2 string = ""
-        % concentration string = ""
         
         % stored data
         raw_data table = table()
@@ -36,17 +28,6 @@ classdef File < handle
         function extract_info(obj)
             % Extracts metadata from the filename using a regex pattern.
             obj.info = File.parse_filename(obj.filename);
-            % return as struct for clarity
-            % obj.info = struct( ...
-            %     'sample', tokens{1}, ...
-            %     'concentration', tokens{2}, ...
-            %     'condition', tokens{3}, ...
-            %     'condition2', tokens{4}, ...
-            %     'polarization', tokens{5}, ...
-            %     'region', str2double(tokens{6}), ...
-            %     'acqtime', str2double(tokens{7}), ...
-            %     'time', tokens{8} ...
-            % );
 
             % Loads the raw data table
             obj.raw_data = readtable(obj.path);
@@ -80,8 +61,8 @@ classdef File < handle
             
             int = obj.raw_data.Intensity;
 
-            % Get logical index of outliers
-            outlierMask = isoutlier(int, "movmedian", obj.window, ThresholdFactor=obj.tf);
+            % % Get logical index of outliers
+            % outlierMask = isoutlier(int, "movmedian", obj.window, ThresholdFactor=obj.tf);
         
             % Fill outliers using interpolation
             int_clean = filloutliers(int, "linear", "movmedian", obj.window, ThresholdFactor=obj.tf);
