@@ -61,8 +61,8 @@ classdef File < handle
             
             int = obj.raw_data.Intensity;
 
-            % % Get logical index of outliers
-            % outlierMask = isoutlier(int, "movmedian", obj.window, ThresholdFactor=obj.tf);
+            % Get logical index of outliers
+            outlierMask = isoutlier(int, "movmedian", obj.window, ThresholdFactor=obj.tf);
         
             % Fill outliers using interpolation
             int_clean = filloutliers(int, "linear", "movmedian", obj.window, ThresholdFactor=obj.tf);
@@ -71,8 +71,7 @@ classdef File < handle
             obj.raw_data.CleanIntensity = int_clean;
         
             % Save outlier info
-            % obj.raw_data.OutlierMask = outlierMask;             % Logical mask
-            % obj.raw_data.OutlierValues = int(outlierMask);      % values
+            obj.raw_data.OutlierMask = outlierMask;             % Logical mask
         end
     end
 
@@ -93,7 +92,9 @@ classdef File < handle
             tokens = regexp(filename, pattern, 'tokens');
         
             if isempty(tokens)
-                error("File:BadName", "Filename '%s' does not match expected pattern.", filename);
+                % error("File:BadName", "Filename '%s' does not match expected pattern.", filename);
+                info = struct.empty;
+                return;
             end
         
             t = tokens{1};
