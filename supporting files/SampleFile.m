@@ -1,9 +1,9 @@
 classdef SampleFile < SignalFile
     properties
-        ref SignalFile
+        ref SignalFile % corresponding reference signal stored as SignalFile object
     end
 
-    methods 
+    methods
         function obj = SampleFile(filestruct)
             obj@SignalFile(filestruct);
         end
