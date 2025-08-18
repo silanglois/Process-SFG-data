@@ -18,7 +18,8 @@ classdef SignalFile < File
                 error("Wavelength mismatch during background subtraction.");
             end
 
-            obj.processed_data.Intensity = obj.processed_data.Intensity - obj.bg.processed_data.Intensity;
+            obj.processed_data.Intensity = ...
+                obj.processed_data.Intensity - obj.bg.processed_data.Intensity;
         end
     end
 end
