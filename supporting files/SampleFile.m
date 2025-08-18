@@ -3,7 +3,7 @@ classdef SampleFile < SignalFile
         ref SignalFile % corresponding reference signal stored as SignalFile object
     end
 
-    methods
+    methods (Access = public)
         function obj = SampleFile(filestruct)
             obj@SignalFile(filestruct);
         end
@@ -16,7 +16,6 @@ classdef SampleFile < SignalFile
         end
 
         function process(obj)
-
             % remove the cosmic rays in all spectra involved
             obj.cleanRays;
             obj.bg.cleanRays;
@@ -36,6 +35,15 @@ classdef SampleFile < SignalFile
             obj.normalize; % normalize
 
             % note that the conversion to wavenumber does not occur here
+        end
+
+        function convert_to_absorbance(obj)
+            % convert from transmittance to absorbance (probably only used
+            % for polystyrene calibration)
+            % Make sure that you subtract the background and normalize BEFORE 
+            % calling this function
+            obj.processed_data.Intensity(obj.processed_data.Intensity <= 0) = eps;
+            obj.processed_data.Absorbance = -log10(obj.processed_data.Intensity);
         end
 
     end

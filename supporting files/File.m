@@ -17,7 +17,7 @@ classdef File < handle
         window double = 15
     end
 
-    methods
+    methods (Access = public)
         function obj = File(filestruct)
             % Constructor
             obj.filename = filestruct.name;
@@ -76,6 +76,7 @@ classdef File < handle
     end
 
     methods (Static, Access = private)
+
         function info = parse_filename(filename)
             pattern = "^([^_]+)" + ...                           % 1. sample
                 "(?:_([^_]+))?" + ...                      % 2. concentration (optional)
