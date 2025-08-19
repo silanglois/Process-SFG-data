@@ -50,7 +50,7 @@ are located. You might be prompted to do it at start time, else simply use the
 Warning: at this time, only CSV files are supported. The columns must be labeled 
 "Frame", "Wavelength" (in nanometers), and "Intensity" (see the example data).
 
-![data sorting tab](/assets/data sorting tab.png)
+![data sorting tab](/assets/data_sorting_tab.png)
 
 ### 2 - Match files
 Use the dropdowns in the tables to match files in the data sorting tab.  
@@ -61,31 +61,38 @@ If a file contains what is inputed in the `calibration string` or `reference str
 fields, it will be sorted as calibration or reference, accordingly.[^1] All other 
 files will be sorted as sample files.
 
+Click the "Apply changes" button on the bottom right once done with the matching.
+
 Note: If you name your files the same way I (Simon) do, you might notice that 
 most of this sorting is automatic.
 
 [^1]: An issue was raised on this topic.
 
-### 3 - *(Optional)* Visualize raw data files
+### 3 - Calibrate visible wavelength
+*Still need to add docs*
+
+![calibration tab](/assets/calibration_tab.png)
+
+### 4 - *(Optional)* Visualize raw data files
 All checked files in the tree in the data sorting tab are plotted in the "Raw 
-data" tab.
+data" tab. Those can be visualized before mathcing the different files together.
 
-![raw data tab](/assets/raw data tab.png)
+![raw data tab](/assets/raw_data_tab.png)
 
-### 4 - *(Optional)* Remove peaks due to cosmic rays
+### 5 - *(Optional)* Remove peaks due to cosmic rays
 *Still need to add docs*
 
 ![cosmic ray removal](/assets/cleaning.png)
 
-### 5 - Process and plot results
-In the sorting data tab, click the "Apply changes" button once you are done 
-with the previous steps. Your data will be processed and displayed in the newly 
-appeared "Processed data" tab.
+### 6 - Process and plot results
+In the sorting data tab, click the "Apply changes" button once you are satisfied 
+with matching. Your data will be processed and displayed in the newly appeared 
+"Processed data" tab.
 
 ![processed - not clean](/assets/processed-dirty.png)
 ![processed - clean](/assets/processed-clean.png)
 
-### 6 - Export processed data or create reports
+### 7 - Export processed data or create reports
 *Still need to add docs*
 
 
