@@ -1,9 +1,13 @@
 # Process-SFG-data
 
-A MATLAB App for processing Sum Frequency Generation (SFG) spectroscopy data. 
-Originally built for the Cyran lab.
+A MATLAB App for processing Sum Frequency Generation (SFG) spectroscopy data.  
+Originally built for the [Cyran lab](https://sites.google.com/view/cyranlab/home).
 
-# Index
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![MATLAB](https://img.shields.io/badge/MATLAB-R2025a-blue.svg)
+![App Designer](https://img.shields.io/badge/Made%20with-App%20Designer-orange.svg)
+
+# Table of Contents
 
 - [Process-SFG-data](#process-sfg-data)
   - [Features](#features)
@@ -15,7 +19,9 @@ Originally built for the Cyran lab.
     - [4 - (Optional) Remove peaks due to cosmic-rays](#4---optional-remove-peaks-due-to-cosmic-rays)
     - [5 - Process and plot results](#5---process-and-plot-results)
     - [6 - Export processed data or create reports](#6---export-processed-data-or-create-reports)
+  - [Example Data](#example-data)
   - [Requirements](#requirements)
+  - [Roadmap](#roadmap)
   - [License](#license)
   - [Troubleshooting](#troubleshooting)
   - [Contributing](#contributing)
@@ -32,8 +38,8 @@ Originally built for the Cyran lab.
 1. Clone or download this repository.  
 2. Open the `.mlapp` file in MATLAB (App Designer).  
 3. Add the `supporting files` folder to your MATLAB path. Run `addpath(genpath("supporting files"));` 
-in the command window, or right click onto the folder and select "add to path".
-4. Run the app from MATLAB.
+in the command window, or right click onto the folder and select "add to path".  
+4. Run the app from MATLAB.  
 
 ## Usage
 ### 1 - Select input directory
@@ -41,14 +47,16 @@ In the "Data sorting" tab, select the directory (folder) in which you datafiles
 are located. You might be prompted to do it at start time, else simply use the 
 "Set/change working directory" button on the top left.
 
-Warning: at this time, only CSV files are supported. The columns must be labled 
+Warning: at this time, only CSV files are supported. The columns must be labeled 
 "Frame", "Wavelength" (in nanometers), and "Intensity" (see the example data).
 
+![data sorting tab](/assets/data sorting tab.png)
+
 ### 2 - Match files
-Use the dropdowns in the tables to match files in the data sorting tab.\
+Use the dropdowns in the tables to match files in the data sorting tab.  
 The files are pre-sorted into background files, reference files (e.g. quartz), 
 calibration files (e.g. polystyrene), and sample files. If a file contains "bg", 
-or "bkg", or "background" in its filename, it will be sorted as a background. 
+or "bkg", or "background" in its filename, it will be sorted as a background.  
 If a file contains what is inputed in the `calibration string` or `reference string` 
 fields, it will be sorted as calibration or reference, accordingly.[^1] All other 
 files will be sorted as sample files.
@@ -59,40 +67,57 @@ most of this sorting is automatic.
 [^1]: An issue was raised on this topic.
 
 ### 3 - *(Optional)* Visualize raw data files
-All checked files in the tree in the data sorting tab are plotted in teh "Raw 
+All checked files in the tree in the data sorting tab are plotted in the "Raw 
 data" tab.
+
+![raw data tab](/assets/raw data tab.png)
 
 ### 4 - *(Optional)* Remove peaks due to cosmic rays
 *Still need to add docs*
 
-### 5. Process and plot results
+![cosmic ray removal](/assets/cleaning.png)
+
+### 5 - Process and plot results
 In the sorting data tab, click the "Apply changes" button once you are done 
 with the previous steps. Your data will be processed and displayed in the newly 
 appeared "Processed data" tab.
 
-### 6. Export processed data or create reports
+![processed - not clean](/assets/processed-dirty.png)
+![processed - clean](/assets/processed-clean.png)
+
+### 6 - Export processed data or create reports
 *Still need to add docs*
 
 
+## Example Data
+You can find example `.csv` files in the example [`data`](/data/) folder.  
+These files demonstrate the expected input format with columns labeled:  
+- `Frame`  
+- `Wavelength` (in nanometers)  
+- `Intensity`  
+
 ## Requirements
 - Fully programmed and tested using MATLAB R2025a. However, MATLAB R2023a or 
-later *may* work (App Designer necessary).
+later *may* work (App Designer necessary).  
+
+## Roadmap
+Planned improvements:  
+- [ ] Extra background processing (offset, smoothing)
+- [ ] Automate the visible wavelength calibration process
+- [ ] Expand file format support beyond CSV
 
 ## License
 This project is licensed under the MIT License.
 
 ## Troubleshooting
-If these steps below do not solve your issues, please create a new issue.
+If these steps below do not solve your issues, please create a new 
+[issue](https://github.com/silanglois/Process-SFG-data/issues).
 
-1. Check that the supporting files folder is added to the path and accessible.
-2. Check existing issues for temporary fixes.
+1. Check that the supporting files folder is added to the path and accessible.  
+2. Check [existing issues](https://github.com/silanglois/Process-SFG-data/issues)
+ for temporary fixes.  
 
 ## Contributing
 If you want to contribute, feel free to start a pull request.
-
-Features that would be nice to implement:
-- Extra background processing; i.e. apply an offset, smoothing
-- Automatize the vis wavelength calibration process.
-- *Feel free to suggest anything else: **simonlanglois@u.boisestate.edu***
-
-Also see the current issues (it would be nice if those were gone).
+See the current [roadmap](#roadmap) and the 
+[current issues](https://github.com/silanglois/Process-SFG-data/issues) (it would be nice if those were gone).  
