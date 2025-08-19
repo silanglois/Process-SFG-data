@@ -47,7 +47,8 @@ In the "Data sorting" tab, select the directory (folder) in which you datafiles
 are located. You might be prompted to do it at start time, else simply use the 
 "Set/change working directory" button on the top left.
 
-Warning: at this time, only CSV files are supported. The columns must be labeled 
+> [!WARNING]
+> At this time, only CSV files are supported. The columns must be labeled 
 "Frame", "Wavelength" (in nanometers), and "Intensity" (see the example data).
 
 ![data sorting tab](/assets/data_sorting_tab.png)
@@ -63,7 +64,8 @@ files will be sorted as sample files.
 
 Click the "Apply changes" button on the bottom right once done with the matching.
 
-Note: If you name your files the same way I (Simon) do, you might notice that 
+> [!TIP]
+> If you name your files the same way I (Simon) do, you might notice that 
 most of this sorting is automatic.
 
 [^1]: An issue was raised on this topic.
