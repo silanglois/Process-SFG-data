@@ -1,6 +1,31 @@
+# MATLAB generated files
+*.asv        # Autosave files
+*.m~         # Backup files
+*.fig        # Figures saved interactively
+*.slxc       # Simulink cache
+*.mex*       # Compiled MEX binaries
 
-/untitled.m
+# App Designer autosaves
+*.mlappinstall
 
-/Copy_of_9003-53-6-IR.jdx
+# Data files
+*.mat        # Binary MATLAB data (unless you want them versioned)
+*.csv        # Experimental raw data (if large or personal)
 
-/9003-53-6-IR.jdx
+# System / editor files
+.DS_Store
+Thumbs.db
+
+# Project files
+*.prj
+*.simproj
+*.mlproj
+*.autosave
+
+# Logs
+*.log
+
+# User-specific
+*.settings
+*.idea/
+*.vscode/
