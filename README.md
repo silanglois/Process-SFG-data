@@ -1,6 +1,6 @@
 # Process-SFG-data
 
-A MATLAB App for processing Sum Frequency Generation (SFG) spectroscopy data.  
+A MATLAB App for processing Sum Frequency Generation (SFG) spectroscopy data.
 Originally built for the [Cyran lab](https://sites.google.com/view/cyranlab/home).
 
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -40,7 +40,7 @@ Originally built for the [Cyran lab](https://sites.google.com/view/cyranlab/home
 2. Open the `.mlapp` file in MATLAB (App Designer).  
 3. Add the `supporting files` folder to your MATLAB path. Run `addpath(genpath("supporting files"));` 
 in the command window, or right click onto the folder and select "add to path".  
-4. Run the app from MATLAB.  
+4. Run the app from MATLAB App Designer.
 
 ## Usage
 ### 1 - Select input directory
@@ -107,11 +107,10 @@ These files demonstrate the expected input format with columns labeled:
 - `Intensity`  
 
 ## Requirements
-- Fully programmed and tested using MATLAB R2025a. However, MATLAB R2023a or 
-later *may* work (App Designer necessary).  
+- MATLAB R2025a (R2024b does not work)
 
 ## Roadmap
-Planned improvements:  
+Planned improvements:
 - [ ] Extra background processing (offset, smoothing)
 - [ ] Automate the visible wavelength calibration process
 - [ ] Expand file format support beyond CSV
@@ -123,11 +122,11 @@ This project is licensed under the MIT License.
 If these steps below do not solve your issues, please create a new 
 [issue](https://github.com/silanglois/Process-SFG-data/issues).
 
-1. Check that the supporting files folder is added to the path and accessible.  
+1. Check that the supporting files folder is added to the path and accessible.
 2. Check [existing issues](https://github.com/silanglois/Process-SFG-data/issues)
- for temporary fixes.  
+ for temporary fixes.
 
 ## Contributing
 If you want to contribute, feel free to start a pull request.
 See the current [roadmap](#roadmap) and the 
-[current issues](https://github.com/silanglois/Process-SFG-data/issues) (it would be nice if those were gone).  
+[current issues](https://github.com/silanglois/Process-SFG-data/issues) (it would be nice if those were gone).
