@@ -7,7 +7,7 @@ Originally built for the [Cyran lab](https://sites.google.com/view/cyranlab/home
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2025a-blue.svg)
 ![App Designer](https://img.shields.io/badge/Made%20with-App%20Designer-orange.svg)
 
-# Table of Contents
+## Table of Contents
 
 - [Process-SFG-data](#process-sfg-data)
   - [Features](#features)
