@@ -14,7 +14,7 @@ classdef File < handle
 
         % cleaning parameters
         tf     double = 8 % threshold factor
-        window double = 15
+        window double = 30
     end
 
     methods (Access = public)
