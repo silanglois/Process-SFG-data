@@ -119,26 +119,23 @@ Once satisfied with your processed data, you can choose to export it by clicking
 Here is an example of `.csv` file produced (only including the first few rows):
 ```
 # Processed data export
-# visible wavelength used : 794.6 nm
-# Background file used: cell_ssp_6um_30s_1007_bg.csv
-# Reference file used: cell_ssp_6um_30s_1007_bg.csv
-# Background for reference file: cell_ssp_6um_30s_1007_bg.csv
-# Date processed: 2025-08-08 14:54
+# visible wavelength used : 794.55 nm
+# Background file used: oa_50mgL_cold_ssp_6um_600s_0950_bg.csv
+# Reference file used: zqz_cold_ssp_6um_10s_1051.csv
+# Background for reference file: zqz_cold_ssp_6um_10s_1054_bg.csv
+# Date processed: 2025-08-20 16:34
 # -----------------------
 Wavenumber,Intensity
-2522.346438,0.076271
-2520.859408,1.387500
-2519.372713,3.913043
-2517.886354,1.375000
-2516.400331,-0.375000
-2514.914643,0.731707
-2513.429290,1.100000
-2511.944273,0.272727
-2510.459590,0.662791
-2508.975244,0.888889
-2507.491232,1.945946
-2506.007555,-0.088235
-2504.524213,0.281250
+2521.554484,66.375000
+2520.067454,20.357143
+2518.580759,26.564516
+2517.094400,16.690909
+2515.608376,24.445946
+2514.122688,16.157895
+2512.637336,19.760870
+2511.152318,17.602041
+2509.667636,21.450000
+2508.183289,29.250000
 ```
 
 ## Example Data
