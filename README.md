@@ -72,14 +72,32 @@ most of this sorting is automatic.
 [^1]: An issue was raised on this topic.
 
 ### 3 - Calibrate visible wavelength
-*Still need to add docs*
+Use the "Calibration" tab to calibrate the visible wavelength. In the dropdown on the top left, select which file you desire to use for calibration (the options are the different lines in the vis wavelength calibration tables in the data sorting tab). The raw data for the selected calibration file and the corresponding reference and background is plotted in the top left axis. Those datafiles are used to plot the measured absorbance of your calibration sample on the bottom left axis.[^calibration] The collected calibration absoption spectum is plotted against the imaginary refractive index of polystyrene, with the original data coming from the [National Institute of Standards and Technology](https://webbook.nist.gov/cgi/cbook.cgi?ID=C9003536&Mask=80#IR-Spec).
 
+Change the number in the "Calibrate visible wavelength" field until the peak positions overlap between the NIST data and your collected data. You can use the sliders on the left to aid in getting the overlap more accurately: the baseline slider will shift the NIST spectrum up/down, and the multiplier slider will increase/decrease the NIST peaks amplitude.  
+
+[^calibration]: At this time, only polystyrene is supported as it is the only calibration sample used by the Cyran Lab.
+
+Here is an example of what is shown in the calibration tab, with the wavelength calibrated (overlap of the collected and NIST peaks):\
 ![calibration tab](/assets/calibration_tab.png)
 
 ### 4 - *(Optional)* Visualize raw data files
 All checked files in the tree in the data sorting tab are plotted in the "Raw 
-data" tab. Those can be visualized before mathcing the different files together.
+data" tab. Those can be visualized before matching the different files together.
 
+In the raw data tab, you can use the checkbox tree on the left to view the data corresponding to specific files (the nodes can be expanded or collapsed as needed). You will notice that this tree is organized as follows:
+> - Raw data
+>   - Samples
+>   - References
+>   - Backgrounds
+> - Cleaned data
+>   - Samples
+>   - References
+>   - Backgrounds
+
+The cleaned data is shown by default, see [the following section](#5---optional-remove-peaks-due-to-cosmic-rays) for more details on data cleaning.
+
+Here is an example of what is shown in the raw data tab:\
 ![raw data tab](/assets/raw_data_tab.png)
 
 ### 5 - *(Optional)* Remove peaks due to cosmic rays
@@ -95,9 +113,33 @@ with matching. Your data will be processed and displayed in the newly appeared
 ![processed - not clean](/assets/processed-dirty.png)
 ![processed - clean](/assets/processed-clean.png)
 
-### 7 - Export processed data or create reports
-*Still need to add docs*
+### 7 - Export processed data
+Once satisfied with your processed data, you can choose to export it by clicking the "Export" (or "Export selected") button at the bottom left of the processed data tab. You will be prompted to pick the directory (folder) in which you want the data files to be saved. A `.csv` file will be created for each produced SFG spectra. The first few rows contain information about the different files and settings used to obtain the processed data, which follows that information.
 
+Here is an example of `.csv` file produced (only including the first few rows):
+```
+# Processed data export
+# visible wavelength used : 794.6 nm
+# Background file used: cell_ssp_6um_30s_1007_bg.csv
+# Reference file used: cell_ssp_6um_30s_1007_bg.csv
+# Background for reference file: cell_ssp_6um_30s_1007_bg.csv
+# Date processed: 2025-08-08 14:54
+# -----------------------
+Wavenumber,Intensity
+2522.346438,0.076271
+2520.859408,1.387500
+2519.372713,3.913043
+2517.886354,1.375000
+2516.400331,-0.375000
+2514.914643,0.731707
+2513.429290,1.100000
+2511.944273,0.272727
+2510.459590,0.662791
+2508.975244,0.888889
+2507.491232,1.945946
+2506.007555,-0.088235
+2504.524213,0.281250
+```
 
 ## Example Data
 You can find example `.csv` files in the example [`data`](/data/) folder.  
