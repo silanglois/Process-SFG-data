@@ -113,9 +113,33 @@ with matching. Your data will be processed and displayed in the newly appeared
 ![processed - not clean](/assets/processed-dirty.png)
 ![processed - clean](/assets/processed-clean.png)
 
-### 7 - Export processed data or create reports
-*Still need to add docs*
+### 7 - Export processed data
+Once satisfied with your processed data, you can choose to export it by clicking the "Export" (or "Export selected") button at the bottom left of the processed data tab. You will be prompted to pick the directory (folder) in which you want the data files to be saved. A `.csv` file will be created for each produced SFG spectra. The first few rows contain information about the different files and settings used to obtain the processed data, which follows that information.
 
+Here is an example of `.csv` file produced (only including the first few rows):
+```
+# Processed data export
+# visible wavelength used : 794.6 nm
+# Background file used: cell_ssp_6um_30s_1007_bg.csv
+# Reference file used: cell_ssp_6um_30s_1007_bg.csv
+# Background for reference file: cell_ssp_6um_30s_1007_bg.csv
+# Date processed: 2025-08-08 14:54
+# -----------------------
+Wavenumber,Intensity
+2522.346438,0.076271
+2520.859408,1.387500
+2519.372713,3.913043
+2517.886354,1.375000
+2516.400331,-0.375000
+2514.914643,0.731707
+2513.429290,1.100000
+2511.944273,0.272727
+2510.459590,0.662791
+2508.975244,0.888889
+2507.491232,1.945946
+2506.007555,-0.088235
+2504.524213,0.281250
+```
 
 ## Example Data
 You can find example `.csv` files in the example [`data`](/data/) folder.  
