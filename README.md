@@ -72,14 +72,32 @@ most of this sorting is automatic.
 [^1]: An issue was raised on this topic.
 
 ### 3 - Calibrate visible wavelength
-*Still need to add docs*
+Use the "Calibration" tab to calibrate the visible wavelength. In the dropdown on the top left, select which file you desire to use for calibration (the options are the different lines in the vis wavelength calibration tables in the data sorting tab). The raw data for the selected calibration file and the corresponding reference and background is plotted in the top left axis. Those datafiles are used to plot the measured absorbance of your calibration sample on the bottom left axis.[^calibration] The collected calibration absoption spectum is plotted against the imaginary refractive index of polystyrene, with the original data coming from the [National Institute of Standards and Technology](https://webbook.nist.gov/cgi/cbook.cgi?ID=C9003536&Mask=80#IR-Spec).
 
+Change the number in the "Calibrate visible wavelength" field until the peak positions overlap between the NIST data and your collected data. You can use the sliders on the left to aid in getting the overlap more accurately: the baseline slider will shift the NIST spectrum up/down, and the multiplier slider will increase/decrease the NIST peaks amplitude.  
+
+[^calibration]: At this time, only polystyrene is supported as it is the only calibration sample used by the Cyran Lab.
+
+Here is an example of what is shown in the calibration tab, with the wavelength calibrated (overlap of the collected and NIST peaks):\
 ![calibration tab](/assets/calibration_tab.png)
 
 ### 4 - *(Optional)* Visualize raw data files
 All checked files in the tree in the data sorting tab are plotted in the "Raw 
-data" tab. Those can be visualized before mathcing the different files together.
+data" tab. Those can be visualized before matching the different files together.
 
+In the raw data tab, you can use the checkbox tree on the left to view the data corresponding to specific files (the nodes can be expanded or collapsed as needed). You will notice that this tree is organized as follows:
+> - Raw data
+>   - Samples
+>   - References
+>   - Backgrounds
+> - Cleaned data
+>   - Samples
+>   - References
+>   - Backgrounds
+
+The cleaned data is shown by default, see [the following section](#5---optional-remove-peaks-due-to-cosmic-rays) for more details on data cleaning.
+
+Here is an example of what is shown in the raw data tab:\
 ![raw data tab](/assets/raw_data_tab.png)
 
 ### 5 - *(Optional)* Remove peaks due to cosmic rays
