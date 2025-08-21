@@ -19,7 +19,7 @@ Originally built for the [Cyran lab](https://sites.google.com/view/cyranlab/home
     - [4 - (Optional) Visualize raw data files](#4---optional-visualize-raw-data-files)
     - [5 - (Optional) Remove peaks due to cosmic-rays](#5---optional-remove-peaks-due-to-cosmic-rays)
     - [6 - Process and plot results](#6---process-and-plot-results)
-    - [7 - Export processed data or create reports](#7---export-processed-data-or-create-reports)
+    - [7 - Export processed data or create reports](#7---export-processed-data)
   - [Example Data](#example-data)
   - [Requirements](#requirements)
   - [Roadmap](#roadmap)
@@ -60,16 +60,14 @@ The files are pre-sorted into background files, reference files (e.g. quartz),
 calibration files (e.g. polystyrene), and sample files. If a file contains "bg", 
 or "bkg", or "background" in its filename, it will be sorted as a background.  
 If a file contains what is inputed in the `calibration string` or `reference string` 
-fields, it will be sorted as calibration or reference, accordingly.[^1] All other 
+fields, it will be sorted as calibration or reference, accordingly. All other 
 files will be sorted as sample files.
 
 Click the "Apply changes" button on the bottom right once done with the matching.
 
 > [!TIP]
-> If you name your files the same way I (Simon) do, you might notice that 
-most of this sorting is automatic.
-
-[^1]: An issue was raised on this topic.
+> If you name your files the same way I do, you might notice that 
+most of this sorting is automatic. See [Example data](#example-data) for more details.
 
 ### 3 - Calibrate visible wavelength
 Use the "Calibration" tab to calibrate the visible wavelength. In the dropdown on the top left, select which file you desire to use for calibration (the options are the different lines in the vis wavelength calibration tables in the data sorting tab). The raw data for the selected calibration file and the corresponding reference and background is plotted in the top left axis. Those datafiles are used to plot the measured absorbance of your calibration sample on the bottom left axis.[^calibration] The collected calibration absoption spectum is plotted against the imaginary refractive index of polystyrene, with the original data coming from the [National Institute of Standards and Technology](https://webbook.nist.gov/cgi/cbook.cgi?ID=C9003536&Mask=80#IR-Spec).
@@ -141,9 +139,27 @@ Wavenumber,Intensity
 ## Example Data
 You can find example `.csv` files in the example [`data`](/data/) folder.  
 These files demonstrate the expected input format with columns labeled:  
-- `Frame`  
-- `Wavelength` (in nanometers)  
-- `Intensity`  
+- `Frame`
+- `Wavelength` (in nanometers)
+- `Intensity`
+
+Also, those files are named using the specified naming system and therefore get sorted mostly automatically.
+
+> [!TIP]
+> This naming system is as follows: `SampleName(_numValue)(_condition1)(_condition2)_pol_region_acqtime_time(_bg).csv`, with
+> - `SampleName`: Name of the sample. Can be any combination of letters/symbols/numbers (with exceptions, see below).
+> - `numValue`: *optional* a numbered value followed by a combination of letters (e.g. "5mgL").
+> - `condition1`: *optional* Any combination of letters/symbols/numbers (with exceptions, see below).
+> - `condition2`: *optional* Any combination of letters/symbols/numbers (with exceptions, see below).
+> - `pol`: Sequence of three letters in any combination of the letters s and p (e.g. "ssp").
+> - `region`: A number followed by "um" (e.g. "5.5um"). This number represents the central wavelength of your IR light.   
+> - `acqtime`: A number followed by "s", intended to be the length of your spectrum acquisition in seconds (e.g. "300s") 
+> - `time`: The time a which the spectrum acquisition was started, in 24hr time, without units or seconds (e.g. "1540" for a spectrum taken at 3:40 PM)
+> - `bg`: *optional* Used to indicate that a file is a background file.
+> 
+> Each of those is separated by one underscore. You can use capital letters, but those are not differenciated when reading the filenames. You may include dots and spaces (although it is not necessarily good practice), but you may NOT include slashes, or underscores other than the ones separating the different tokens.
+>
+> **For Cyran Lab members:** If you use the experiment tracker I built, the filename given should follow this pattern. I recommend using it as it makes your life much easier.
 
 ## Requirements
 - MATLAB R2025a (R2024b does not work)
@@ -167,5 +183,4 @@ If these steps below do not solve your issues, please create a new
 
 ## Contributing
 If you want to contribute, feel free to start a pull request.
-See the current [roadmap](#roadmap) and the 
-[current issues](https://github.com/silanglois/Process-SFG-data/issues) (it would be nice if those were gone).
+See the current [roadmap](#roadmap) and the [current issues](https://github.com/silanglois/Process-SFG-data/issues) (it would be nice if those were gone), you may also start something new if you desire.
