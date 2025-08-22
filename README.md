@@ -108,6 +108,7 @@ In the sorting data tab, click the "Apply changes" button once you are satisfied
 with matching. Your data will be processed and displayed in the newly appeared 
 "Processed data" tab.
 
+Here are examples of some processed SFG spectra. Cosmic rays were still not fully cleaned in the first screenshot, but fully cleaned in the second.
 ![processed - not clean](/assets/processed-dirty.png)
 ![processed - clean](/assets/processed-clean.png)
 
@@ -146,7 +147,8 @@ These files demonstrate the expected input format with columns labeled:
 Also, those files are named using the specified naming system and therefore get sorted mostly automatically.
 
 > [!TIP]
-> This naming system is as follows: `SampleName(_numValue)(_condition1)(_condition2)_pol_region_acqtime_time(_bg).csv`, with
+> **The naming system is as follows:**\
+>  `SampleName(_numValue)(_condition1)(_condition2)_pol_region_acqtime_time(_bg).csv`, with
 > - `SampleName`: Name of the sample. Can be any combination of letters/symbols/numbers (with exceptions, see below).
 > - `numValue`: *optional* a numbered value followed by a combination of letters (e.g. "5mgL").
 > - `condition1`: *optional* Any combination of letters/symbols/numbers (with exceptions, see below).
@@ -166,7 +168,7 @@ Also, those files are named using the specified naming system and therefore get 
 
 ## Roadmap
 Planned improvements:
-- [ ] Extra background processing (offset, smoothing)
+- [ ] Extra background processing (offset, smoothing) *-- in progress*
 - [ ] Automate the visible wavelength calibration process
 - [ ] Expand file format support beyond CSV
 
