@@ -2,19 +2,19 @@ classdef File < handle
 
     properties (Access = public)
         % original file info
-        filename string
-        path     string
+        filename       string
+        path           string
 
-        % extracted file info
-        info struct
+        info           struct    % extracted file info
+        vis_wl         double = NaN
 
         % stored data (defaults to empty table)
         raw_data       table = table()
         processed_data table = table()
 
         % cleaning parameters
-        tf     double = 8 % threshold factor
-        window double = 15
+        tf             double = 8 % threshold factor
+        window         double = 15
     end
 
     methods (Access = public)
@@ -50,10 +50,17 @@ classdef File < handle
                 'VariableNames', {'Wavelength', 'Intensity'});
         end
 
-        function convert_to_wn(obj, w1)
+        function convert_to_wn(obj)
             % Converts wavelength to wavenumber using probe wavelength w1 (in nm)
-            wn = 1e7 ./ obj.processed_data.Wavelength - 1e7 / w1;
+            if ~isnan(obj.vis_wl)
+            wn = 1e7 ./ obj.processed_data.Wavelength - 1e7 / obj.vis_wl;
             obj.processed_data.Wavenumber = wn;
+            else
+                error( ...
+                    "Error when converting to wavenumber: Visible wavelength not assigned (File: %s)", ...
+                    obj.filename ...
+                    );
+            end
         end
 
         function cleanRays(obj)
