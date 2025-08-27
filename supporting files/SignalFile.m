@@ -8,6 +8,8 @@ classdef SignalFile < File
     end
 
     methods (Access = public)
+        
+        % constructor
         function obj = SignalFile(filestruct)
             obj@File(filestruct);
 
@@ -16,6 +18,7 @@ classdef SignalFile < File
             obj.window = 20;
         end
 
+        % subtract the background from the signal
         function subtract_background(obj)
             if ~isequal(obj.processed_data.Wavelength, obj.bg.processed_data.Wavelength)
                 error("Wavelength mismatch during background subtraction.");
@@ -23,9 +26,8 @@ classdef SignalFile < File
             bgData = obj.modifyBackground;
             obj.processed_data.Intensity = obj.processed_data.Intensity - bgData.Intensity;
         end
-    end
 
-    methods (Access = private)
+        % applies an offset and/or smoothing to the background
         function bgData = modifyBackground(obj)
             bgData = obj.bg.processed_data;
             if 0 <= obj.bgSmoothFactor && obj.bgSmoothFactor <= 1
