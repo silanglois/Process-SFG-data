@@ -20,7 +20,7 @@ classdef SignalFile < File
             if ~isequal(obj.processed_data.Wavelength, obj.bg.processed_data.Wavelength)
                 error("Wavelength mismatch during background subtraction.");
             end
-            bgData = modifyBackground;
+            bgData = obj.modifyBackground;
             obj.processed_data.Intensity = obj.processed_data.Intensity - bgData.Intensity;
         end
     end
