@@ -54,7 +54,7 @@ are located. You might be prompted to do it at start time, else simply use the
 > At this time, only CSV files are supported. The columns must be labeled 
 "Frame", "Wavelength" (in nanometers), and "Intensity" (see the example data).
 
-![data sorting tab](/assets/data_sorting_tab.png)
+<img width="1430" height="842" alt="data_sorting_tab" src="https://github.com/user-attachments/assets/6e6dbf75-a9cb-4d0b-9544-de28ff7e67b3" />
 
 ### 2 - Match files
 Use the dropdowns in the tables to match files in the data sorting tab.  
@@ -87,7 +87,7 @@ In the raw data tab, you can use the checkbox tree on the left to view the data 
 The cleaned data is shown by default, see [the corresponding section](#remove-peaks-induced-by-cosmic-rays) for more details on data cleaning.
 
 Here is an example of what is shown in the raw data tab:\
-![raw data tab](/assets/raw_data_tab.png)
+<img width="1428" height="820" alt="raw_data_tab" src="https://github.com/user-attachments/assets/bf051867-3ee9-4833-8817-7e34745e0345" />
 
 ### 3 - Calibrate visible wavelength
 Use the "Calibration" tab to calibrate the visible wavelength. In the dropdown on the top left, select which file you desire to use for calibration (the options are the different lines in the vis wavelength calibration tables in the data sorting tab). The raw data for the selected calibration file and the corresponding reference and background is plotted in the top left axis. Those datafiles are used to plot the measured absorbance of your calibration sample on the bottom left axis.[^calibration] The collected calibration absoption spectum is plotted against the imaginary refractive index of polystyrene, with the original data coming from the [National Institute of Standards and Technology](https://webbook.nist.gov/cgi/cbook.cgi?ID=C9003536&Mask=80#IR-Spec).
@@ -97,7 +97,7 @@ Change the number in the "Calibrate visible wavelength" field until the peak pos
 [^calibration]: At this time, only polystyrene is supported as it is the only calibration sample used by the Cyran Lab.
 
 Here is an example of what is shown in the calibration tab, with the wavelength calibrated (overlap of the collected and NIST peaks):\
-![calibration tab](/assets/calibration_tab.png)
+<img width="1427" height="840" alt="calibration_tab" src="https://github.com/user-attachments/assets/c33771e5-1982-4085-a7e9-ca3000aa9a14" />
 
 ### 4 - Process and plot results
 In the sorting data tab, click the "Apply changes" button once you are satisfied 
@@ -105,8 +105,9 @@ with matching. Your data will be processed and displayed in the newly appeared
 "Processed data" tab.
 
 Here are examples of some processed SFG spectra. Cosmic rays were still not fully cleaned in the first screenshot, but fully cleaned in the second.
-![processed - not clean](/assets/processed-dirty.png)
-![processed - clean](/assets/processed-clean.png)
+<img width="1433" height="839" alt="processed-dirty" src="https://github.com/user-attachments/assets/4de45521-bcf5-4656-9efa-76b77f80ff6c" />
+<img width="1426" height="823" alt="processed-clean" src="https://github.com/user-attachments/assets/72e56d7e-4c1f-47f4-92bf-6cfd50083a10" />
+
 
 ### 5 - Export processed data
 Once satisfied with your processed data, you can choose to export it by clicking the "Export" (or "Export selected") button at the bottom left of the processed data tab. You will be prompted to pick the directory (folder) in which you want the data files to be saved. A `.csv` file will be created for each produced SFG spectra. The first few rows contain information about the different files and settings used to obtain the processed data, which follows that information.
@@ -134,12 +135,14 @@ Wavenumber,Intensity
 ### Remove peaks induced by cosmic rays
 *Still need to add docs*
 
-![cosmic ray removal](/assets/cleaning.png)
+<img width="1427" height="833" alt="cleaning_table" src="https://github.com/user-attachments/assets/37f8fb1e-f9ad-4bb4-9868-1d5273157412" />
+<img width="1221" height="654" alt="cleaning_app" src="https://github.com/user-attachments/assets/6c53f903-e892-4e91-9948-9eeccb0885f8" />
 
 ### Modify the background for a given signal
 *Still need to add docs*
 
-
+<img width="1428" height="837" alt="bg_modif" src="https://github.com/user-attachments/assets/367b2a14-b132-4bc0-81b5-add0bb9f911f" />
+<img width="1202" height="733" alt="bg_app" src="https://github.com/user-attachments/assets/7fdc59a6-891f-4b67-8fd3-e32749d8b2f6" />
 
 
 ## Example Data
