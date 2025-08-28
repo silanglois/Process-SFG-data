@@ -151,7 +151,7 @@ Select the lines in the table that correspond to the files you want to adjust th
 > If you have already matched files together (see [Match files](#2---match-files)), press "Apply changes" once you are done with setting the cleaning parameters for your files.
 
 ### Modify the background for a given signal
-*Still need to add docs*
+*Apologies, the documentation for this section is not available yet.*
 
 <img width="1428" height="837" alt="bg_modif" src="https://github.com/user-attachments/assets/367b2a14-b132-4bc0-81b5-add0bb9f911f" />
 <img width="1202" height="733" alt="bg_app" src="https://github.com/user-attachments/assets/7fdc59a6-891f-4b67-8fd3-e32749d8b2f6" />
