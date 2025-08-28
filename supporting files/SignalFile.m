@@ -8,7 +8,7 @@ classdef SignalFile < File
     end
 
     methods (Access = public)
-        
+
         % constructor
         function obj = SignalFile(filestruct)
             obj@File(filestruct);
@@ -21,7 +21,7 @@ classdef SignalFile < File
         % subtract the background from the signal
         function subtract_background(obj)
             if ~isequal(obj.processed_data.Wavelength, obj.bg.processed_data.Wavelength)
-                error("Wavelength mismatch during background subtraction.");
+                error("Wavelength mismatch during background subtraction.")
             end
             bgData = obj.modifyBackground;
             obj.processed_data.Intensity = obj.processed_data.Intensity - bgData.Intensity;

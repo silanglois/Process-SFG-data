@@ -14,7 +14,7 @@ classdef File < handle
 
         % cleaning parameters
         tf             double = 8 % threshold factor
-        window         double = 15
+        window         double = 30
     end
 
     methods (Access = public)
@@ -22,7 +22,7 @@ classdef File < handle
             % Constructor
             obj.filename = filestruct.name;
             obj.path = fullfile(filestruct.folder, filestruct.name);
-            obj.extract_info; % Extract metadata and load raw data
+            obj.extract_info % Extract metadata and load raw data
         end
 
         function extract_info(obj)
@@ -59,7 +59,7 @@ classdef File < handle
                 error( ...
                     "Error when converting to wavenumber: Visible wavelength not assigned (File: %s)", ...
                     obj.filename ...
-                    );
+                    )
             end
         end
 
@@ -101,7 +101,7 @@ classdef File < handle
 
             if isempty(tokens)
                 info = struct.empty;
-                return;
+                return
             end
 
             t = tokens{1};
