@@ -133,10 +133,22 @@ Wavenumber,Intensity
 ## Additional features
 
 ### Remove peaks induced by cosmic rays
-*Still need to add docs*
+Cosmic rays can induce sharp intense peaks on the spectra. If unfortunate, those peaks can end up obsucring spectral features. However, due to the intense and sharp nature of those peaks, they are relatively easy to clean automatically. The `filloutliers(int, "linear", "movmedian", obj.window, ThresholdFactor=obj.tf)` function is used; the window and threshold factor parameters have default values, but can be ajusted manually by the user by using the "Additional cleaning" tab pictured below.
 
 <img width="1427" height="833" alt="cleaning_table" src="https://github.com/user-attachments/assets/37f8fb1e-f9ad-4bb4-9868-1d5273157412" />
+
+Select the lines in the table that correspond to the files you want to adjust the parameters of then press the edit button at the top right. A new window (pictured below) should appear, you can adjust the cleaning parameters and see the results of those modifications in the plotting area. The red circles show points that have been labeled as outliers and therefore removed, the spectra plotted is the "clean" spectra. Press save once you are satisfied with the cleaning. 
+
 <img width="1221" height="654" alt="cleaning_app" src="https://github.com/user-attachments/assets/6c53f903-e892-4e91-9948-9eeccb0885f8" />
+
+> [!NOTE]
+> Multiple files can be cleaned at once (by selecting multiple rows). However, they will all have the same parameters; for different cleaning paratemers you will have to iterate the cleaning steps for each group of files.
+
+> [!NOTE]
+> The peaks are removed before any processing steps (averaging, normalizing, etc...) as this is when they are the sharpest and therefore the easiest to remove automatically.
+
+> [!IMPORTANT]
+> If you have already matched files together (see [Match files](#2---match-files)), press "Apply changes" once you are done with setting the cleaning parameters for your files.
 
 ### Modify the background for a given signal
 *Still need to add docs*
