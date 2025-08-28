@@ -168,9 +168,7 @@ Also, those files are named using the specified naming system and therefore get 
 
 ## Roadmap
 Planned improvements:
-- [ ] Extra background processing (offset, smoothing) *-- in progress*
-- [ ] Automate the visible wavelength calibration process
-- [ ] Expand file format support beyond CSV
+- [ ] *Nothing for now, feel free to suggest features you would like.*
 
 ## License
 This project is licensed under the MIT License.
